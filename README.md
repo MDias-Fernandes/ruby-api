@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Create a rails project only for APIs:
+    > rails new ruby-api-project --api
 
-Things you may want to cover:
+- Up the server with rails app:
+    > rails s
 
-* Ruby version
+- Create a scaffold:
+    > rails g scaffold contact name:string email:string birthdate:string value:type
 
-* System dependencies
+- Run:
+    > rails db:migrate
 
-* Configuration
+- Generate a rake:
+    > rails generate task dev setup
 
-* Database creation
+- Run rake:
+    > rails dev:setup
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Recursos:
+    > config/routes - descreve os recursos existentes na minha aplicação
+    > o recurso(rota) contacts foi criado, ou seja, URLs disponíveis para solicitar ao servidor algum serviço.
+    > os recursos são sempre escritos no PLURAL.
+    > recursos são sempre SUBSTANTIVOS e nunca VERBOS
