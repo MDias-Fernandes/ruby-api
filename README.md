@@ -1,35 +1,35 @@
 # README
 
 - Create a rails project only for APIs:
-    > rails new ruby-api-project --api
+    - rails new ruby-api-project --api
 
 - Up the server with rails app:
-    > rails s
+    - rails s
 
 - Create a scaffold:
-    > rails g scaffold contact name:string email:string birthdate:string value:type
+    - rails g scaffold contact name:string email:string birthdate:string value:type
 
 - Run:
-    > rails db:migrate
+    - rails db:migrate
 
 - Generate a rake:
-    > rails generate task dev setup
+    - rails generate task dev setup
 
 - Run rake:
-    > rails dev:setup
+    - rails dev:setup
 
 - Recursos:
-    > config/routes - descreve os recursos existentes na minha aplicação
-    > o recurso(rota) contacts foi criado, ou seja, URLs disponíveis para solicitar ao servidor algum serviço.
-    > os recursos são sempre escritos no PLURAL.
-    > recursos são sempre SUBSTANTIVOS e nunca VERBOS
+    - config/routes - descreve os recursos existentes na minha aplicação
+    - o recurso(rota) contacts foi criado, ou seja, URLs disponíveis para solicitar ao servidor algum serviço.
+    - os recursos são sempre escritos no PLURAL.
+    - recursos são sempre SUBSTANTIVOS e nunca VERBOS
 
 - curl:
-    > Com o '-v' na chamada com curl, é possível identificar toda a estrutura da chamada e não apenas a resposta
-    > Com o '-X' na chamada com curl, é possível definir qual verbo HTTP será utilizado na chamada (GET, PUT, POST, PATCH)
-    > Com o '-i' na chamada com curl, é possível identificar todo o cabeçalho da resposta à chamada HTTP
-    > Com o '-H' na chamada com curl, é possível indicar que uma parâmetro no Header será enviado, por exemplo, `-H Content-Type: application/json`
-    > Com o '-d' na chamada com curl, é possível enviar um body para a chamada (POST, PUT e PATCH), por exemplo, `-d '{"name": "value", "data": 500}'`
+    - Com o '-v' na chamada com curl, é possível identificar toda a estrutura da chamada e não apenas a resposta
+    - Com o '-X' na chamada com curl, é possível definir qual verbo HTTP será utilizado na chamada (GET, PUT, POST, PATCH)
+    - Com o '-i' na chamada com curl, é possível identificar todo o cabeçalho da resposta à chamada HTTP
+    - Com o '-H' na chamada com curl, é possível indicar que uma parâmetro no Header será enviado, por exemplo, `-H Content-Type: application/json`
+    - Com o '-d' na chamada com curl, é possível enviar um body para a chamada (POST, PUT e PATCH), por exemplo, `-d '{"name": "value", "data": 500}'`
         
 - Cabeçalho de uma resposta HTTP:
     - Start-line: Versão HTTP usada + Status da chamada
