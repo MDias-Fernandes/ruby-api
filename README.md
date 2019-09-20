@@ -1,22 +1,22 @@
 # README
 
 - Create a rails project only for APIs:
-    - rails new ruby-api-project --api
+    - `rails new ruby-api-project --api`
 
 - Up the server with rails app:
-    - rails s
+    - `rails s`
 
 - Create a scaffold:
-    - rails g scaffold contact name:string email:string birthdate:string value:type
+    - `rails g scaffold contact name:string email:string birthdate:string value:type`
 
 - Run:
-    - rails db:migrate
+    - `rails db:migrate`
 
 - Generate a rake:
-    - rails generate task dev setup
+    - `rails generate task dev setup`
 
 - Run rake:
-    - rails dev:setup
+    - `rails dev:setup`
 
 - Recursos:
     - config/routes - descreve os recursos existentes na minha aplicação
@@ -67,3 +67,10 @@
         - Elemento raíz, `root: true`, vem com o nome da origem dos dados
         - Com o `only` e o `except` é possível manipular o que será exibido usando o `render json:`
         - Com o `as_json` sobrescrevo o método original e passo via parâmetros quais personalizações quero para as responses de todas as APIs de um determinado recurso
+
+- Novo CRUD com tabelas relacionadas
+    - `rails g scaffold Kind description:string` - Criação de um CRUD padrão, nome da tabela é `Kind`
+    - `rails g migration add_kind_to_contact kind:references` - Cria uma chave estrangeira 'referência' dentro da tabela contacts
+    - `rails db:migrate`
+    - `rails db:drop db:create db:migrate dev:setup`
+    - `belongs_to`, `has_one`, `has_many`, `has_and_belongs_to_many`
