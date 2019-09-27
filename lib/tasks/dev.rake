@@ -1,7 +1,7 @@
 namespace :dev do
   desc "Configure development environment"
-  task setup: :environment do
 
+  task setup: :environment do
     puts 'Registering contact kinds'
     kinds = ["Amigo", "Conhecido", "Parente"]
     kinds.each do |kind|
@@ -21,7 +21,10 @@ namespace :dev do
         kind: Kind.all.sample
       )
     end
+  end
 
+  task :do_something_here do
+    
   end
 
 end

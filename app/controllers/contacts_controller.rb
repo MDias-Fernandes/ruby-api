@@ -4,18 +4,16 @@ class ContactsController < ApplicationController
   # GET /contacts
   def index
     @contacts = Contact.all
-    render json: @contacts,  #{ |contact| contact.attributes.merge({author: "Matheus Dias"})} --- Mergeia novos atributos ao payload da response
-      status: :partial_content, #> Definir manulmente qual status_code quero que seja respondido às chamadas
-      root: true, #> Com esse boolean, pode-se definir se a raíz (origem) do dado será exibida ou não
-      only: [:name, :email], #> Definição de quais dados serão exibidos na resposta à chamada
-      except: [:birthdate], #> Definição de quais dados NÃO serão exibidos na resposta à chamada
-
-      methods: :author #> Utilização de um método personalizado que está contruído no arquivo ../ruby-api-project/app/models/contact.rb
+    render json: @contacts,
+    methods: :kind_description,
+    except: :kind_id
   end
 
   # GET /contacts/1
   def show
-    render json: @contact
+    render json: @contact,
+    except: :kind_id,
+    methods: :kind_description
   end
 
   # POST /contacts
@@ -51,6 +49,6 @@ class ContactsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :birthdate)
+      params.require(:contact).permit(:name, :email, :birthdate, :kind)
     end
 end

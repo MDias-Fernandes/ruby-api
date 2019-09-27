@@ -10,13 +10,13 @@
     - `rails g scaffold contact name:string email:string birthdate:string value:type`
 
 - Run:
-    - `rails db:migrate`
+    - `rails db:migrate` - Alteração da estrutura do BD e maném um log de alterações realizadas
 
 - Generate a rake:
     - `rails generate task dev setup`
 
 - Run rake:
-    - `rails dev:setup`
+    - `rails dev:setup` - Executar uma operação que não necessariamente está associada às regras de negócio
 
 - Recursos:
     - config/routes - descreve os recursos existentes na minha aplicação
@@ -74,3 +74,28 @@
     - `rails db:migrate`
     - `rails db:drop db:create db:migrate dev:setup`
     - `belongs_to`, `has_one`, `has_many`, `has_and_belongs_to_many`
+
+- Trazer outros dados de uma entidade relacionada - inclusão da lógica em `models/contact.rb`
+    - Exibição aninhada: `include: {kind: {only: :description}}`
+    - Exibição na estrutura inicial:
+        - Criação de um método:
+            `def kind_description`
+                `self.kind.description`
+            `end`
+        - Chamada desse método sobrescrevendo o método `as_json`:
+            `methods: [:kind_description]`
+        - Para a não exibição de dados:
+            `except: :kind_id`
+
+- PERSONALIZAÇÃO da exibição de atributos quando um determinado recurso é consumido:
+    - Sobrescrita de método `as_json` para todos os recursos
+        - No model eu posso sobrescrever o método originalmente implementado para que a exibição personalizada seja padrão para todos os recursos
+    - Personalizar a exibição especificamente em um recurso
+        - Definir na estrutura do `Controller`
+
+- Registro de dados na API
+    - No método `contact_params` é necessário que os atributos que serão registrados na base sejam explicitamente identificados
+    - Ou não utilizar o parâmetro `optional`, como por exemplo `belongs_to :kind, optional: true`
+
+- Usar I18n para internacionalização de dados, como por exemplo datas.
+    - `I18n.l(Date.today)` => 01/01/2000
