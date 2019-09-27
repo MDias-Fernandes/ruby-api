@@ -5,7 +5,6 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
     render json: @contacts,
-    methods: :kind_description,
     except: :kind_id
   end
 
@@ -13,7 +12,7 @@ class ContactsController < ApplicationController
   def show
     render json: @contact,
     except: :kind_id,
-    methods: :kind_description
+    methods: [:kind_description, :avaiable_phones]
   end
 
   # POST /contacts

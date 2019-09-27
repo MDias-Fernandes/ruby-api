@@ -101,7 +101,7 @@
     - `I18n.l(Date.today)` => 01/01/2000
 
 - Criação de mais relacionamentos
-    - `rails g scaffold Phone number:string` - Modelo que possui uma referência para a entidade contact
-    - `rails g migration add_phones_to_contact phone:references`
+    - `rails g model Phone number:string contact:references` - Modelo que possui uma referência para a entidade contact
     - `rails db:migrate`
     - `rails db:drop db:create db:migrate dev:setup`
+    - `rails dev:set_phones`

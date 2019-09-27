@@ -8,6 +8,12 @@ class Contact < ApplicationRecord
         self.kind.description
     end
 
+    def avaiable_phones
+        self.phones.map do |phone|
+            phone.number
+        end
+    end
+
     # def random
     #     Faker::Name.name
     # end
