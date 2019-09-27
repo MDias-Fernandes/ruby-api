@@ -99,3 +99,6 @@
 
 - Usar I18n para internacionalização de dados, como por exemplo datas.
     - `I18n.l(Date.today)` => 01/01/2000
+
+- Criação de mais relacionamentos
+    - `rails g model Phone number:string contact:references` - Modelo que possui uma referência para a entidade contact

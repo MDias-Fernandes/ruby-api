@@ -1,5 +1,8 @@
 class Contact < ApplicationRecord
-    belongs_to :kind
+    belongs_to :kind 
+    has_many :phones
+    # Definição das ASSOCIAÇÕES de todos os relacionamentos que essa entidade possui com as demais
+    # Uma vez definido que o atributo pode ser OPCIONAL, ele deve permanecer opicional, se não a aplicação vai quebrar
 
     def kind_description
         self.kind.description
