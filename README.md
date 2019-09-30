@@ -105,3 +105,5 @@
     - `rails db:migrate`
     - `rails db:drop db:create db:migrate dev:setup`
     - `rails dev:set_phones`
+
+- Quando um `Model` é criado, nesse caso `Phones`, só é possível atualizá-lo na criação ou atualização de um contato
