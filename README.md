@@ -107,3 +107,23 @@
     - `rails dev:set_phones`
 
 - Quando um `Model` é criado, nesse caso `Phones`, só é possível atualizá-lo na criação ou atualização de um contato
+
+- Relacionamento `has_one`
+    - `rails g model Address street:string city:string contact:references`
+    - Mesmo com uma associação `has_one` é possível criar mais de um endereço para o mesmo contato, 
+    entretanto, somente o último endereço cadastrado é válido, ao fazer uma busca pela relação de endereço(s) desse determinado contato
+    nota-se que exite mais de um endereço, mas toda vez que o endereço associado ao contato é buscado, apenas o último é exibido.
+
+- CRUD `has_one`
+    - `update_only` - Só permite atualização dos registros e não a criação de novos
+    - Do que foi executado no rails 6, quando é solicitado a atualização dos dados em uma relação `has_one` sem a indicação do `id`
+    o seguinte erro ocorreu: 
+        `"status": 422,`
+        `"error": "Unprocessable Entity",`
+        `"exception": "#<ActiveRecord::RecordNotSaved: Failed to remove the existing associated address. The record failed to save after its foreign key was set to nil.>",`
+
+- CORS: Cross-Origin Resource Sharing
+    - config/initializers/cors.rb
+    - Permite que outros sites 'servidores' acessem/compartilhem dos recursos existentes na minha aplicação
+    - **SERIA POSSÍVEL CONSTRUIR AS APIs GERADORAS DE CONTEXTO COM RAILS E FAZER COM QUE ELAS SE COMUNIQUEM COM O _CORE_ VIA _CORS_???**
+    - 

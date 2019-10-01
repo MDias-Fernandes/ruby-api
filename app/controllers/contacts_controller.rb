@@ -12,7 +12,7 @@ class ContactsController < ApplicationController
   def show
     render json: @contact,
     except: :kind_id,
-    include: :phones
+    include: [:phones, :address]
   end
 
   # POST /contacts
@@ -22,7 +22,8 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, 
       methods: [:kind_description, :avaiable_phones],
-      status: :created, 
+      include: [:address],
+      status: :created,
       location: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity
@@ -32,7 +33,8 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   def update
     if @contact.update(contact_params)
-      render json: @contact, include: :phones
+      render json: @contact, 
+      include: [:phones, :address]
     else
       render json: @contact.errors, status: :unprocessable_entity
     end
@@ -52,8 +54,9 @@ class ContactsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def contact_params
       params.require(:contact).permit(
-        :name, :email, :birthdate, 
-        :kind_id, phones_attributes: [:id, :number, :_destroy] # Deleta um número de telefone associado ao contato
+        :name, :email, :birthdate, :kind_id, 
+        phones_attributes: [:id, :number, :_destroy], # Deleta um número de telefone associado ao contato
+        address_attributes: [:id, :street, :city]
       )
         # Sem a PORRA do *_attributes, não vai funcionar!
         # NUNCA esquecer de definir EXPLICITAMENTE os atributos que serão recebidos em um PUT ou PATCH

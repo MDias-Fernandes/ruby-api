@@ -5,9 +5,11 @@ class Contact < ApplicationRecord
 
     belongs_to :kind 
     has_many :phones
+    has_one :address
     
+    accepts_nested_attributes_for :address, update_only: true # update_only indica apenas que os atributos serão atualizados e não criados novos
     accepts_nested_attributes_for :phones, allow_destroy: true 
-    #Permite incluir o atributo associado através da chamada e DELETAR também os telefones através de um PATCH no contato
+    #...permite trabalharmos com JSON aninhado, isto é, informando dados de tabelas relacionadas.
 
     def kind_description
         self.kind.description
