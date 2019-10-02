@@ -126,4 +126,15 @@
     - config/initializers/cors.rb
     - Permite que outros sites 'servidores' acessem/compartilhem dos recursos existentes na minha aplicação
     - **SERIA POSSÍVEL CONSTRUIR AS APIs GERADORAS DE CONTEXTO COM RAILS E FAZER COM QUE ELAS SE COMUNIQUEM COM O _CORE_ VIA _CORS_???**
-    - 
+
+- Active Model Serializers (AMS)
+    - Serialização é o processo de tradução de estruturas de dados ou estado de objeto em um formato que possa ser armazenado e reconstruído posteriormente no mesmo ou em outro ambiente computacional.
+    - {json:api} É uma especificação para construir APIs em JSON
+    - Para criar um serializer para os models que você deseja trabalhar: `rails g serializer MODEL` -> contact, kind, etc.
+    - Com o serializer construído, as _responses_ são 'fornecidas' pelo próprio serializer durante a chamada, por exemplo `render json: @contacts`
+    - `O serializer é usado para 'exibição' dos dados, ou seja, através dele é possível editar quais atributos exibir ou não`
+    - Serializer: _Descrevem QUAIS atributos e relacionamentos devem ser serializados._
+    - Adapters: _Descrevem COMO os atributos e relacionamentos devem ser serializados._
+    - Para formatar usando o json_api como modelo: `ActiveModel::Serializer.config.adapter = :json_api` + ams
+    - Para trabalhar com as associações, basta informá-las assim como no model `belongs_to`, `has_many`, `has_one`
+    - Com o uso de `meta: {}` é possível adicionar metadados para complementar os dados renderizados na response da chamada

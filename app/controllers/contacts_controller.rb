@@ -11,8 +11,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   def show
     render json: @contact,
-    except: :kind_id,
-    include: [:phones, :address]
+    include: [:kind]
   end
 
   # POST /contacts
