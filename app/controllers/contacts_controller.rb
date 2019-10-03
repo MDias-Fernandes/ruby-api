@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   def show
     render json: @contact,
-    include: [:kind]
+    include: [:kind, :address, :phones]
   end
 
   # POST /contacts
@@ -19,10 +19,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      render json: @contact, 
-      methods: [:kind_description, :avaiable_phones],
-      include: [:address],
-      status: :created,
+      render json: @contact,
+      include: [:kind, :address, :phones],
       location: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity
@@ -52,12 +50,17 @@ class ContactsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contact_params
-      params.require(:contact).permit(
-        :name, :email, :birthdate, :kind_id, 
-        phones_attributes: [:id, :number, :_destroy], # Deleta um número de telefone associado ao contato
-        address_attributes: [:id, :street, :city]
-      )
+        # params.require(:contact).permit(
+        #   :name, :email, :birthdate, :kind_id, 
+        #   phones_attributes: [:id, :number, :_destroy], # Deleta um número de telefone associado ao contato
+        #   address_attributes: [:id, :street, :city]
+        # )
+        #
+        #
         # Sem a PORRA do *_attributes, não vai funcionar!
         # NUNCA esquecer de definir EXPLICITAMENTE os atributos que serão recebidos em um PUT ou PATCH
+        
+        # Usando a desserialização para json:api
+        ActiveModelSerializers::Deserialization.jsonapi_parse(params) # pode ser usado `only`, `except` e `keys`
     end
 end

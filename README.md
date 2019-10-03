@@ -138,3 +138,23 @@
     - Para formatar usando o json_api como modelo: `ActiveModel::Serializer.config.adapter = :json_api` + ams
     - Para trabalhar com as associações, basta informá-las assim como no model `belongs_to`, `has_many`, `has_one`
     - Com o uso de `meta: {}` é possível adicionar metadados para complementar os dados renderizados na response da chamada
+
+- Links (HATEOAS)
+    - Hypermedia - links dinâmicos que disponibilizam acesso ao meu servidor relativos àquele recurso
+
+- Foreman (Procfile)
+    - Usado para definir todas as ações que eu desejo executar no momento em que estou subindo o servidor da minha aplicação.
+
+- Media Type
+    - Definição do formato do dado e como ele deve ser interpretado pela máquina, ou seja, diferenciar entre JSON e XML.
+        - application/json
+        - application/xml
+        - multipart/form-data
+        - texthtml
+    - Para informar o media type, usamos o header field **Accept** no momento da requisição
+    - Mime Type é a mesma coisa que Media Type
+
+- Desserialização
+    - Faz com que o objeto JSON que segue as regras json:api seja interpretado corretamente pelo rails
+    - CRUD
+        - 
