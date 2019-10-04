@@ -132,7 +132,7 @@
     - {json:api} É uma especificação para construir APIs em JSON
     - Para criar um serializer para os models que você deseja trabalhar: `rails g serializer MODEL` -> contact, kind, etc.
     - Com o serializer construído, as _responses_ são 'fornecidas' pelo próprio serializer durante a chamada, por exemplo `render json: @contacts`
-    - `O serializer é usado para 'exibição' dos dados, ou seja, através dele é possível editar quais atributos exibir ou não`
+    - **O serializer é usado para 'exibição' dos dados, ou seja, através dele é possível editar quais atributos exibir ou não**
     - Serializer: _Descrevem QUAIS atributos e relacionamentos devem ser serializados._
     - Adapters: _Descrevem COMO os atributos e relacionamentos devem ser serializados._
     - Para formatar usando o json_api como modelo: `ActiveModel::Serializer.config.adapter = :json_api` + ams
@@ -166,4 +166,13 @@
 - Relacionamentos e Rotas
     - Singular Resources: `resource :resource_name`
     - Namespace and Routing: `resources :articles, path: '/admin/articles'`
+    - **PASSO A PASSO**
+        - Construa a rota em `/ruby-api-project/config/routes.rb`
+        - Defina o `link` no `serializer` correspondente ao `controller` de manipulação dos dados que você vai chamar
+        - _(Se necessário)_ construa o controller de manipulação dos dados
     
+- Nomenclatura dos `controllers`
+    - Todo novo controller deve ser nomeado no plural, independentemente se o tipo de relacionamento seja `has_one`
+
+- CRUD, Nested Attributes e AMS
+    - 

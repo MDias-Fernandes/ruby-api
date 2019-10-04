@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  resources :kinds
+  resources :kinds, :phones#, :address
 
+  # Seguindo a estrutura abaixo por ser as definições do {json:api}
   resources :contacts do
     resource :kind, only: [:show]
-    resource :kind, only: [:show], path: 'relationships/kind'
+    resource :kind, only: [:show], path: 'relationships/kind' #funciona por ser belongs_to
 
     resource :phones, only: [:show]
-    resource :phones, only: [:show], path: 'relationships/phones'
+    resource :phones, only: [:show], path: 'relationships/phones' #funciona por ser has_many
+
+    resource :address, only: [:show]
+    resource :address, only: [:show], path: 'relationships/address'
+
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

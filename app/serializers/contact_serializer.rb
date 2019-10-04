@@ -1,7 +1,7 @@
 class ContactSerializer < ActiveModel::Serializer
   attributes :id, :name, :email, :birthdate
 
-  # Lidando com associações
+  # Lidando com associações, esses links serão renderizados na resposta à chamada da API
   belongs_to :kind do
     link(:related) {contact_kind_url(object.id)}
   end
@@ -10,7 +10,9 @@ class ContactSerializer < ActiveModel::Serializer
     link(:related) {contact_phones_url(object.id)}
   end
 
-  has_one :address
+  has_one :address do
+    link(:related) {contact_address_url(object.id)}
+  end
 
 
   #criação de links apenas com o path -> contact_path
