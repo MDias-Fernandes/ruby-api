@@ -180,3 +180,19 @@
 - CRUD AMS
     - **Melhor exemplo de controller do projeto é no arquivo `app/controllers/addresses_controller.rb`**
 
+- Autenticação HTTP
+    - Tipos de autenticação
+        - Basic (básica - `base64`)
+            - **Encode64**
+                - `require 'base64'` -> `Base64.encode64('user:pass')` -> Tem um `\n` no final
+                - `require 'base64'` -> `Base64.strict64('user:pass')` -> NÃO tem um `\n` no final
+        - Digest (resumida - `MD5`)
+            - **MD5**
+                - `require 'digest/md5'` -> `Digest::MD5.hexdigest('user:pass')`
+    - Trabalhando com serviços é necessário enviar um `Header` com o parâmetro `Authorization: senha-encriptada`
+
+- Autenticação baseada em TOKEN (Comumnte usada para autorizar chamadas às APIs)
+    - `Authorization: Token 6afc7f...`
+    - Autenticação baseada em `token` é `Stateful`
+
+    
