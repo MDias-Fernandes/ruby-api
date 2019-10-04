@@ -156,5 +156,14 @@
 
 - Desserialização
     - Faz com que o objeto JSON que segue as regras json:api seja interpretado corretamente pelo rails
-    - CRUD
-        - 
+
+**PORTANTO**
+
+- **Models**: for handling _data_ and _business logic_
+- **Controllers**: for _handling the user interface_ and application
+- **AMS - _Active Model Serializer_**: Tradução (_serialization_ and _deserialization_) para estruturação e manipulação de dados no lugar dos _Models_
+
+- Relacionamentos e Rotas
+    - Singular Resources: `resource :resource_name`
+    - Namespace and Routing: `resources :articles, path: '/admin/articles'`
+    

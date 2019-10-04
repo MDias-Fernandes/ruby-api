@@ -3,10 +3,13 @@ class ContactSerializer < ActiveModel::Serializer
 
   # Lidando com associações
   belongs_to :kind do
-    link(:related) {kind_url(object.kind.id)}
+    link(:related) {contact_kind_url(object.id)}
   end
   
-  has_many :phones
+  has_many :phones do
+    link(:related) {contact_phones_url(object.id)}
+  end
+
   has_one :address
 
 
