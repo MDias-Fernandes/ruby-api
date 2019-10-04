@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resource :phones, only: [:show]
     resource :phones, only: [:show], path: 'relationships/phones' #funciona por ser has_many
 
-    resource :address, only: [:show]
-    resource :address, only: [:show], path: 'relationships/address'
+    resource :address, only: [:show, :update, :create, :destroy]
+    resource :address, only: [:show, :update, :create, :destroy], path: 'relationships/address'
 
   end
   

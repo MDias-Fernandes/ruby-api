@@ -175,4 +175,7 @@
     - Todo novo controller deve ser nomeado no plural, independentemente se o tipo de relacionamento seja `has_one`
 
 - CRUD, Nested Attributes e AMS
-    - 
+    - **Segundo a documentação do json:api, não é possível cadastar, por exemplo, um contato com os seus respectivos tipos, telefones e endereço (`relationships`), portanto, é necessário que, nesse caso, 3 outras chamadas sejam feitas além da própria chamada POST de um novo contato.**
+
+- CRUD AMS
+    - **Melhor exemplo de controller do projeto é no arquivo `app/controllers/addresses_controller.rb`**
