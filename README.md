@@ -193,6 +193,19 @@
 
 - Autenticação baseada em TOKEN (Comumnte usada para autorizar chamadas às APIs)
     - `Authorization: Token 6afc7f...`
-    - Autenticação baseada em `token` é `Stateful`
+    - Autenticação baseada em `token` é `Stateful`, ou seja, quando o servidor precisa conhecer os meus dados
+    - Autenticação em que não é preciso que o servidor me "conheça" é `Stateless`
 
-    
+- JWT - JSON Web Tokens
+    - Guarda no próprio `Token` as informações que o servidor precisa **validar**
+    - No servidor existe uma `chave` que consegue verificar se o Token é valido ou não
+    - Estrutura
+        - Basicamente um TOKEN dividido em 3 partes -> `HEADER`, `PAYLOAD` e `SIGNATURE`
+        - Exemplo
+            - `browser:` POST/login with username+password  ->  `server:` Cria JWT com segredo
+            - `browser:` Retorna JWT para o browser         <-  `server:` Cria JWT com segredo
+            - `browser:` Envia JWT no header Authorization  ->  `server:` Checa assinatura JWT com segredo. Pega dados do usuário do JWT
+            - `browser:` Envia resposta para o cliente      <-  `server:` Checa assinatura JWT com segredo. Pega dados do usuário do JWT
+        - Para definir o tempo de expiração, com Ruby, use o atributo `exp:`
+
+- 
