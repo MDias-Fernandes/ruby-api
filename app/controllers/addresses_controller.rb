@@ -4,12 +4,10 @@ class AddressesController < ApplicationController
   # GET /phones/1
   def show
     render json: @address
-    require 'pry'; binding.pry
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    require 'pry'; binding.pry
     def set_address
         @address = Contact.find(params[:contact_id]).address
     end
