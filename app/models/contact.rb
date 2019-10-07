@@ -1,5 +1,8 @@
 class Contact < ApplicationRecord
 
+    # WORKING WITH kaminari, paginação de quantos elementos serão renderizados
+    paginates_per(5)
+
     # Definição das ASSOCIAÇÕES de todos os relacionamentos que essa entidade possui com as demais
     # Uma vez definido que o atributo pode ser OPCIONAL, ele deve permanecer opicional, se não a aplicação vai quebrar
 

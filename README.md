@@ -208,4 +208,24 @@
             - `browser:` Envia resposta para o cliente      <-  `server:` Checa assinatura JWT com segredo. Pega dados do usuário do JWT
         - Para definir o tempo de expiração, com Ruby, use o atributo `exp:`
 
-- 
+- Versionamento de APIs
+    - Mais comumente utilizado é **Segmento de URL**: `v1/users/permissions`
+    - Com **Query Parameter**:
+        - `localhost:3000/users?version=2`
+        - `if params[:version] == '1'  \n  @contacts = Contact.all`
+    - Com versionamento de `controllers`:
+        - Criação de `modules` diferenciando `v1` de `v2`
+        - Criação de pastas que diferenciem as versões e em cada classe dentro dessas pastas é necessário associá-las ao módulo da versão correspondente, ou seja, `module v1`, `module v2`, etc.
+    - `constraints`: Mecanismo que permite especificar a rota a ser chamada com base em um parâmetro, declarado no arquivo de definição de `rotas`
+    - _Maiores detalhes de como documentar e versionar uma API será realizado em outro repo_
+
+- Diff entre `Accept` e `Content-Type`:
+    - `Accept`: informa ao servidor o que eu espero receber, ou seja, qual formato de resposta será enviado na resposta à chamada
+        - Espero receber um `json`
+    - `Content-Type`: quando vou enviar dados ao servidor, preciso indicar qual o formato que estou enviando
+        - Estou enviando um `xml`
+
+- Paginação
+    - `kaminari` - `Gem` utilizada para paginação de APIs
+    - `api-pagination` - Habilita que o link para a próxima página de itens seja exibido no `Header` da `response`
+    - 
