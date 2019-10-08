@@ -4,9 +4,17 @@ module V1
   
     # GET /contacts
     def index
-      @contacts = Contact.all.page(params[:page]) # Uso de queryStrings
-      paginate json: @contacts,                   # Definição para haver paginação
+      page_number = params[:page] ? params[:page][:number].to_s : 1   # Definição do número da página
+      page_size = params[:page] ? params[:page][:size].to_s : 5       # Definição do número de itens por página
+      # Verifica se existe o parâmetro :page, se sim, utiliza o número indicado para o parâmetro, caso contrário, define 1 por padrão
+
+      @contacts = Contact.all.page(page_number).per(page_size)
+      
+      render json: @contacts,
       include: [:kind, :address, :phones]
+      
+      #paginate json: @contacts,                   # Definição para haver paginação
+      #include: [:kind, :address, :phones]
     end
   
     # GET /contacts/1
