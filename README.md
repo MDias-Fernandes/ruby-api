@@ -227,5 +227,27 @@
 
 - Paginação
     - `kaminari` - `Gem` utilizada para paginação de APIs
-    - `api-pagination` - Habilita que o link para a próxima página de itens seja exibido no `Header` da `response`
-    - 
+
+- Caching
+    - Baseado em `Headers`
+    - Qualquer valor que é difícil e computacionalmente custoso de obter deve ser cacheado;
+    - Influencia inclusive na demora de resposta aos dados consultados;
+    - Objetivos:
+        - 1º Eliminar o envio de requisições o máximo possível;
+        - 2º Reduzir os dados de resposta;
+    - O primeiro objetivo pode ser alcançado usando `Cache-Control` - _método utilizado `expires-in`_
+        - Com o tempo do `Cache-Control` configurado, não é necessário realizar uma nova chamada ao servidor
+        - `Max-Age`: É especificado em quanto tempo o recurso pode ser cacheado, essa definição também pode ser feita por intermediários e não necessariamente pelo navegador
+        - `Public/Private`: **Public**:Qualquer `client` pode realizar cache, **Private**: Somente o `browser` pode realizar cache
+        - `No-Cache/No-Store`: **No-Cache**: A resposta pode ser cacheada mas não pode ser reutilizada sem sem consultada no servidor, **No-Store**: Sem cache _at all_, ou seja, em lugar nenhum
+    - O segundo objetivo pode ser alcançado usando o mecanismo de validação `ETag` ou `Last-Modified` - _método utilizado `fresh_when`_
+        - Na primeira chamada um `ETag` é devolvido na resposta
+        - Na segunda requisição esse mesmo `ETag` é enviado ao servidor através de um parâmetro `Header` e o servidor avalia se aquele token está associado é o mesmo da versão dos dados contidos no servidor, e só devolve ao `client` os dados novos ou atualizados
+
+- Rack e Rack Middleware
+    - `Rack` é um pacote Ruby que provê uma interface para o servidor web se comunicar com a aplicação
+    - `Middleware` é qualquer componente de software que auxilia, mas não está diretamente envolvido na execução de uma tarefa
+    - `Rack-Middleware` é um componente situado entre o cliente e o servidor e que processa requisições de entrada e respostas
+        - _Ex: No `CORE` o `Newrellic` é uma implementação de `middleware` que intercepta os dados da `request/response` e passa adiante sem influenciá-los_
+        - Realizam funções bem específicas, podendo adicioná-los ou removê-los
+        - 

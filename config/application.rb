@@ -21,6 +21,12 @@ Bundler.require(*Rails.groups)
 
 module RubyApiProject
   class Application < Rails::Application
+    
+        # Require each rack file for this piece of shit work!!!
+        Dir["./lib/middleware/*.rb"].each do |file|
+          require file
+        end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
@@ -33,5 +39,8 @@ module RubyApiProject
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # AQUI DEFINO OS MIDDLEWARES QUE IRAM INTERCEPTAR UMA CHAMADA/RESPOSTA E ENTÃO DENTRO DELES MODIFICAR A MEU GOSTO O QUE QUERO QUE ACONTEÇA
+    config.middleware.use AppName, "Ruby Api Project - Via config/application.rb"
   end
 end

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
         # http_basic_authenticate_with name: "abc", password: "123"
  
     include ActionController::HttpAuthentication::Token::ControllerMethods
-    before_action :ensure_json_request
+    # before_action :ensure_json_request
     before_action :authenticate
 
     def ensure_json_request

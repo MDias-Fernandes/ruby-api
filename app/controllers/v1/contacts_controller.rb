@@ -9,6 +9,9 @@ module V1
       page_size = params[:page] ? params[:page][:size].to_s : 5       # Definição do número de itens por página
       # Verifica se existe o parâmetro :page, se sim, utiliza o número indicado para o parâmetro, caso contrário, define 1 por padrão
 
+      # Working with CACHE-CONTROL - Status 304 = DOCUMENTO NÃO ALTERADO
+      # expires_in 30.seconds, public: true
+     
       @contacts = Contact.all.page(page_number).per(page_size)
       
       render json: @contacts,
