@@ -260,4 +260,6 @@
     - Com o `require 'rails_helper'` estou chamando também o `spec_helper.rb`
     - Trabalhando com HASHES `h[:a]` == `h.fetch(:a)`
     - **REPLICA o meu banco de dados do ambiente _development_ para o ambiente _test_: `rails db:migrate RAILS_ENV=test`**
-    - 
+
+
+    
