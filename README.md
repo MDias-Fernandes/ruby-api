@@ -249,5 +249,15 @@
     - `Middleware` é qualquer componente de software que auxilia, mas não está diretamente envolvido na execução de uma tarefa
     - `Rack-Middleware` é um componente situado entre o cliente e o servidor e que processa requisições de entrada e respostas
         - _Ex: No `CORE` o `Newrellic` é uma implementação de `middleware` que intercepta os dados da `request/response` e passa adiante sem influenciá-los_
-        - Realizam funções bem específicas, podendo adicioná-los ou removê-los
-        - 
+        - Realizam funções bem específicas, podendo adicionr ou remover aspectos da `request/response`
+
+- TDD para API
+    - `MiniTest` - framework padrão do Rails, mas o `Rspec` será usado como `gem` de testes, está no diretório `/ruby-api-project/test`
+    - Gerar a pasta de testes: `rails generata rspec:install`
+    - Comando para execução dos testes: `bundle exec rspec`
+    - Construir uma estrutura de pastas e arquivos que se assemelhe a estrutura de pastas e arquivos da minha aplicação e, com isso, testar cada parte dela independentemente do que seja, portanto, testes de `controllers`, `models`, `rack middlewares` etc.
+    - O rspec irá buscar por todos os arquivos teste que terminaram com `_spec.rb`
+    - Com o `require 'rails_helper'` estou chamando também o `spec_helper.rb`
+    - Trabalhando com HASHES `h[:a]` == `h.fetch(:a)`
+    - **REPLICA o meu banco de dados do ambiente _development_ para o ambiente _test_: `rails db:migrate RAILS_ENV=test`**
+    - 

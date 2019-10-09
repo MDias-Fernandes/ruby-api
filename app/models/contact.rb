@@ -3,7 +3,9 @@ class Contact < ApplicationRecord
     
     #Validations are made in MODELS
     validates_presence_of :kind
-    validates_presence_of :address
+    # validates_presence_of :address
+    
+    
     # .to_hash -> Converte em um hash
     # .to_flatten -> Simplifica um array que possui várias camadas
 
